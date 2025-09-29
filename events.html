@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breezo Events</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --deep-night: #000328;
+        --mid-purple: #2A084E;
+        --sunset-orange: #FF7E67;
+        --light-gold: #FFE8B3;
+        --darker-orange: #E9967A;
+        --text-light: #E6E6FA;
+        --text-muted: #CCCCCC;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, var(--deep-night), var(--mid-purple), var(--sunset-orange));
+        background-attachment: fixed;
+        color: var(--text-light);
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-family: 'Baloo 2', cursive;
+        font-size: 3rem;
+        color: var(--light-gold);
+        text-shadow: 0 0 10px rgba(255, 232, 179, 0.6);
+        margin-bottom: 1rem;
+        animation: fadeSlideUp 1s forwards;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        color: var(--text-muted);
+        margin-bottom: 3rem;
+        animation: fadeSlideUp 1s forwards 0.3s;
+    }
+
+    .timeline {
+        position: relative;
+        margin: 2rem 0;
+        padding-left: 2rem;
+        border-left: 2px solid var(--light-gold);
+    }
+
+    .event {
+        position: relative;
+        margin-bottom: 2rem;
+        padding-left: 1rem;
+        animation: fadeSlideUp 0.8s forwards;
+    }
+
+    .event::before {
+        content: '';
+        position: absolute;
+        left: -10px;
+        top: 0;
+        width: 15px;
+        height: 15px;
+        background-color: var(--sunset-orange);
+        border-radius: 50%;
+        box-shadow: 0 0 10px var(--light-gold);
+    }
+
+    .event h3 {
+        color: var(--darker-orange);
+        margin-bottom: 0.3rem;
+    }
+
+    .event p {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+    }
+
+    footer {
+        background-color: var(--deep-night);
+        color: white;
+        padding: 2rem 1rem;
+        text-align: center;
+        box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+    }
+
+    footer a {
+        color: var(--sunset-orange);
+        text-decoration: none;
+        margin: 0 10px;
+        font-weight: 600;
+        transition: color 0.3s;
+    }
+
+    footer a:hover {
+        color: var(--light-gold);
+        text-decoration: underline;
+    }
+
+    @keyframes fadeSlideUp {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+
+    <div class="container hero">
+        <h1>Upcoming Events 🌠</h1>
+        <p>Mark your cosmic calendar with Breezo’s latest happenings</p>
+    </div>
+
+    <div class="container timeline">
+        <div class="event">
+            <h3>Stay Tuned</h3>
+            <p>Commimg Soon</p>
+        </div>
+        <div class="event">
+            <h3>Stay Tuned</h3>
+            <p>Comming Soon<p>
+        </div>
+        <div class="event">
+            <h3>Stay Tuned</h3>
+            <p>Comming Soon</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Stay connected:</p>
+        <a href="" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="" target="_blank" rel="noopener noreferrer">Twitch</a>
+        <a href="" rel="noopener noreferrer">BlueSky</a>
+        <p style="margin-top: 1rem;">&copy; 2025 Breezo. All Breezo rights reserved.</p>
+    </footer>
+
+</body>
+</html>
