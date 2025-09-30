@@ -3,22 +3,86 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Breezo Events</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+<title>Breezo's Flow of Events</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;600&display=swap" rel="stylesheet">
 <style>
     :root {
-        --deep-night: #000328;
-        --mid-purple: #2A084E;
-        --sunset-orange: #FF7E67;
-        --light-gold: #FFE8B3;
-        --darker-orange: #E9967A;
-        --text-light: #E6E6FA;
-        --text-muted: #CCCCCC;
+        /* Softened Wind/Sky/Airy Theme Colors (Matching previous file) */
+        --deep-sky: #002D62;     /* Darker Blue for depth */
+        --calm-blue: #4A90E2;    /* A more inviting mid-blue */
+        --gentle-cyan: #7ED6DF;  /* Soft, light cyan */
+        --cloud-white: #F0F8FF;  /* Very light, slightly blue-tinted white */
+        --petal-pink: #FFC0CB;   /* A soft, contrasting color for highlights */
+        --text-light: #F0F8FF;
+        --text-muted: #B0E0E6;
+        --timeline-line: #90CAF9; /* Slightly lighter blue for the timeline */
+    }
+
+    /* --- Back Button Styling --- */
+
+    .nav-bar {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        animation: fadeIn 1s forwards 0.8s;
+        opacity: 0;
+    }
+
+    .back-to-breezo {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        background-color: rgba(240, 248, 255, 0.2); /* Semi-transparent light background */
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(240, 248, 255, 0.6);
+        border-radius: 50px; /* Cloud-like shape */
+        color: var(--cloud-white);
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .back-to-breezo:hover {
+        background-color: rgba(240, 248, 255, 0.4);
+        color: var(--deep-sky); /* Darker text on hover */
+        transform: scale(1.05);
+        box-shadow: 0 6px 10px rgba(0,0,0,0.2), 0 0 10px var(--gentle-cyan);
+    }
+
+    .back-to-breezo span {
+        margin-right: 8px;
+        font-size: 1.2em;
+        transition: transform 0.3s;
+    }
+
+    .back-to-breezo:hover span {
+        transform: translateX(-3px); /* Gentle movement on hover */
+    }
+    
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    /* --- Existing Styles --- */
+
+    *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
     }
 
     body {
-        font-family: 'Poppins', sans-serif;
-        background: linear-gradient(135deg, var(--deep-night), var(--mid-purple), var(--sunset-orange));
+        font-family: 'Roboto', sans-serif;
+        /* Smoother, gentler sky gradient */
+        background: linear-gradient(135deg, var(--deep-sky) 0%, var(--calm-blue) 65%, var(--gentle-cyan) 100%);
         background-attachment: fixed;
         color: var(--text-light);
         margin: 0;
@@ -29,15 +93,17 @@
     .container {
         max-width: 1000px;
         margin: auto;
-        padding: 2rem;
+        /* Adjusted top padding to prevent content from hiding under the fixed button */
+        padding: 2rem; 
+        padding-top: 5rem;
         text-align: center;
     }
 
     .hero h1 {
-        font-family: 'Baloo 2', cursive;
+        font-family: 'Montserrat', sans-serif;
         font-size: 3rem;
-        color: var(--light-gold);
-        text-shadow: 0 0 10px rgba(255, 232, 179, 0.6);
+        color: var(--petal-pink); /* Soft pink header for warmth */
+        text-shadow: 0 0 10px rgba(255, 192, 203, 0.5);
         margin-bottom: 1rem;
         animation: fadeSlideUp 1s forwards;
     }
@@ -52,31 +118,33 @@
     .timeline {
         position: relative;
         margin: 2rem 0;
-        padding-left: 2rem;
-        border-left: 2px solid var(--light-gold);
+        padding-left: 1.5rem; 
+        /* Timeline line in a light blue color */
+        border-left: 2px solid var(--timeline-line); 
     }
 
     .event {
         position: relative;
+        /* Semi-transparent Calm Blue Background */
+        background-color: rgba(74, 144, 226, 0.2); 
+        backdrop-filter: blur(8px); 
+        border-radius: 8px;
+        padding: 1.2rem; /* Slightly more padding for a roomier feel */
         margin-bottom: 2rem;
-        padding-left: 1rem;
+        text-align: left;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         animation: fadeSlideUp 0.8s forwards;
+        transition: transform 0.3s, box-shadow 0.3s;
     }
-
-    .event::before {
-        content: '';
-        position: absolute;
-        left: -10px;
-        top: 0;
-        width: 15px;
-        height: 15px;
-        background-color: var(--sunset-orange);
-        border-radius: 50%;
-        box-shadow: 0 0 10px var(--light-gold);
+    
+    .event:hover {
+        transform: translateY(-3px); /* Gentle lift */
+        box-shadow: 0 8px 16px rgba(0,0,0,0.3), 0 0 10px var(--gentle-cyan);
+        background-color: rgba(74, 144, 226, 0.35); 
     }
 
     .event h3 {
-        color: var(--darker-orange);
+        color: var(--gentle-cyan); /* Soft cyan header */
         margin-bottom: 0.3rem;
     }
 
@@ -86,15 +154,16 @@
     }
 
     footer {
-        background-color: var(--deep-night);
-        color: white;
+        /* Footer set to Dark Sky Blue */
+        background-color: var(--deep-sky);
+        color: var(--text-light);
         padding: 2rem 1rem;
         text-align: center;
-        box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+        box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
     }
 
     footer a {
-        color: var(--sunset-orange);
+        color: var(--petal-pink); /* Soft pink links */
         text-decoration: none;
         margin: 0 10px;
         font-weight: 600;
@@ -102,7 +171,7 @@
     }
 
     footer a:hover {
-        color: var(--light-gold);
+        color: var(--gentle-cyan);
         text-decoration: underline;
     }
 
@@ -114,32 +183,38 @@
 </head>
 <body>
 
+    <div class="nav-bar">
+        <a href="index.html" class="back-to-breezo">
+            <span>&#8592;</span> Breeze Back
+        </a>
+    </div>
+    
     <div class="container hero">
-        <h1>Upcoming Events 🌠</h1>
-        <p>Mark your cosmic calendar with Breezo’s latest happenings</p>
+        <h1>Flow of Events ☁️</h1>
+        <p>Catch the upcoming streams and gatherings with Breezo.</p>
     </div>
 
     <div class="container timeline">
-        <div class="event">
-            <h3>Stay Tuned</h3>
-            <p>Commimg Soon</p>
+        <div class="event" style="animation-delay: 0.5s;">
+            <h3>Comming Soon</h3>
+            <p>Stay Tuned</p>
         </div>
-        <div class="event">
-            <h3>Stay Tuned</h3>
-            <p>Comming Soon<p>
+        <div class="event" style="animation-delay: 0.7s;">
+            <h3>Comming Soon</h3>
+            <p>Stay Tuned</p>
         </div>
-        <div class="event">
-            <h3>Stay Tuned</h3>
-            <p>Comming Soon</p>
+        <div class="event" style="animation-delay: 0.9s;">
+            <h3>Comming Soon</h3>
+            <p>Stay Tuned</p>
         </div>
     </div>
 
     <footer>
-        <p>Stay connected:</p>
+        <p>Stay connected and ride the current:</p>
         <a href="" target="_blank" rel="noopener noreferrer">YouTube</a>
         <a href="" target="_blank" rel="noopener noreferrer">Twitch</a>
         <a href="" rel="noopener noreferrer">BlueSky</a>
-        <p style="margin-top: 1rem;">&copy; 2025 Breezo. All Breezo rights reserved.</p>
+        <p style="margin-top: 1rem;">&copy; 2025 Breezo. All rights reserved.</p>
     </footer>
 
 </body>
