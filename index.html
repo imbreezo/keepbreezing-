@@ -7,12 +7,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Baloo+2:wght@700&display=swap" rel="stylesheet">
 <style>
     :root {
-        /* Softened Wind/Sky/Airy Theme Colors */
-        --deep-sky: #002D62; /* Darker Blue for depth */
-        --calm-blue: #4A90E2; /* A more inviting mid-blue */
-        --gentle-cyan: #7ED6DF; /* Soft, light cyan */
-        --cloud-white: #F0F8FF; /* Very light, slightly blue-tinted white */
-        --petal-pink: #FFC0CB; /* A soft, contrasting color for highlights */
+        --deep-sky: #002D62;
+        --calm-blue: #4A90E2;
+        --gentle-cyan: #7ED6DF;
+        --cloud-white: #F0F8FF;
+        --petal-pink: #FFC0CB;
         --discord-purple: #5b6eae;
         --discord-hover: #485994;
         --text-light: #F0F8FF;
@@ -31,7 +30,6 @@
 
     body {
         font-family: 'Poppins', sans-serif;
-        /* Smoother, gentler background gradient */
         background: linear-gradient(135deg, var(--deep-sky) 0%, var(--calm-blue) 65%, var(--gentle-cyan) 100%);
         background-attachment: fixed;
         color: var(--text-light);
@@ -50,7 +48,6 @@
         font-family: 'Baloo 2', cursive;
         font-size: 3.5rem;
         color: var(--cloud-white);
-        /* Softer shadow */
         text-shadow: 0 0 10px rgba(74, 144, 226, 0.6); 
         margin-bottom: 0.5rem;
         opacity: 0;
@@ -75,12 +72,11 @@
     }
 
     .card {
-        /* Semi-transparent Calm Background */
         background-color: rgba(74, 144, 226, 0.2);
-        backdrop-filter: blur(8px); /* Slightly more blur for a dreamy feel */
+        backdrop-filter: blur(8px);
         border: 1px solid rgba(240, 248, 255, 0.4); 
         border-radius: 15px;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Lighter shadow */
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         padding: 1.5rem;
         width: 250px;
         text-align: center;
@@ -95,13 +91,13 @@
     .card:nth-child(3) { animation-delay: 1.1s; }
 
     .card:hover {
-        transform: translateY(-5px); /* Less dramatic lift */
+        transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0,0,0,0.3), 0 0 15px var(--gentle-cyan);
-        background-color: rgba(74, 144, 226, 0.35); /* Slightly clearer on hover */
+        background-color: rgba(74, 144, 226, 0.35);
     }
 
     .card h3 {
-        color: var(--petal-pink); /* Soft pink header for warmth */
+        color: var(--petal-pink);
         margin-bottom: 0.5rem;
     }
 
@@ -113,7 +109,7 @@
 
     .card button {
         padding: 0.5rem 1rem;
-        background-color: var(--gentle-cyan); /* Soft cyan button */
+        background-color: var(--gentle-cyan);
         color: var(--deep-sky);
         font-weight: 600;
         border: none;
@@ -123,19 +119,18 @@
     }
 
     .card button:hover {
-        background-color: var(--calm-blue); /* Hover to mid-blue */
+        background-color: var(--calm-blue);
         color: var(--cloud-white);
         transform: scale(1.05);
         box-shadow: 0 0 10px var(--petal-pink);
     }
 
-    .discord-card button {
-        /* Keeping Discord colors for branding */
+    .discord-card a button {
         background-color: var(--discord-purple);
         color: var(--cloud-white);
     }
 
-    .discord-card button:hover {
+    .discord-card a button:hover {
         background-color: var(--discord-hover);
     }
 
@@ -148,7 +143,7 @@
     }
 
     footer a {
-        color: var(--gentle-cyan); /* Soft cyan links */
+        color: var(--gentle-cyan);
         text-decoration: none;
         margin: 0 10px;
         font-weight: 600;
@@ -156,7 +151,7 @@
     }
 
     footer a:hover {
-        color: var(--petal-pink); /* Soft pink on hover */
+        color: var(--petal-pink);
         text-decoration: underline;
     }
 
@@ -188,21 +183,23 @@
         </div>
         <div class="card">
             <h3>Stay Tuned</h3>
-            <p>Comming Soon</p>
+            <p>Coming Soon</p>
             <button onclick="window.location.href='portfolio.html'">Under Update</button>
         </div>
         <div class="card discord-card">
             <h3>The Gathering</h3>
             <p>Join the Breezo community server and connect with us!</p>
-            <button onclick="window.open('', '_blank', 'noopener,noreferrer')">Join The Server</button>
+            <a href="https://discord.gg/SBh4rTh3gr" target="_blank" rel="noopener noreferrer">
+                <button>Join The Server</button>
+            </a>
         </div>
     </div>
 
     <footer>
         <p>Connect with me:</p>
-        <a href="" target="_blank" rel="noopener noreferrer">YouTube</a>
-        <a href="" target="_blank" rel="noopener noreferrer">Twitch</a>
-        <a href="" rel="noopener noreferrer">BlueSky</a>
+        <a href="https://www.youtube.com/@imbreezo" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="#" target="_blank" rel="noopener noreferrer">Twitch</a>
+        <a href="#" rel="noopener noreferrer">BlueSky</a>
         <p style="margin-top: 1rem;">&copy; 2025 Breezo. All rights reserved.</p>
     </footer>
 
