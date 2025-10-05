@@ -7,15 +7,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Baloo+2:wght@700&display=swap" rel="stylesheet">
 <style>
     :root {
-        --deep-sky: #002D62;
-        --calm-blue: #4A90E2;
-        --gentle-cyan: #7ED6DF;
-        --cloud-white: #F0F8FF;
-        --petal-pink: #FFC0CB;
-        --discord-purple: #5b6eae;
-        --discord-hover: #485994;
-        --text-light: #F0F8FF;
-        --text-muted: #B0E0E6;
+        --soft-orange: #ff8c5a;
+        --cozy-pink: #ffb0a3;
+        --sunset-red: #ff6b6b;
+        --peach-glow: #ffd1a9;
+        --cream-white: #fff8f3;
+        --muted-gold: #ffe5b4;
+        --warm-brown: #432a27;
     }
 
     *, *::before, *::after {
@@ -30,11 +28,39 @@
 
     body {
         font-family: 'Poppins', sans-serif;
-        background: linear-gradient(135deg, var(--deep-sky) 0%, var(--calm-blue) 65%, var(--gentle-cyan) 100%);
+        background: linear-gradient(145deg, var(--sunset-red) 0%, var(--soft-orange) 40%, var(--cozy-pink) 75%, var(--peach-glow) 100%);
         background-attachment: fixed;
-        color: var(--text-light);
+        color: var(--cream-white);
         line-height: 1.6;
         overflow-x: hidden;
+    }
+
+    /* Background glow particles (soft embers) */
+    .embers {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .ember {
+        position: absolute;
+        background: radial-gradient(circle, rgba(255,230,200,0.9) 0%, rgba(255,180,120,0.05) 70%);
+        border-radius: 50%;
+        width: 6px;
+        height: 6px;
+        opacity: 0.4;
+        animation: floatEmber 20s infinite ease-in-out;
+    }
+
+    @keyframes floatEmber {
+        0% { transform: translateY(0) translateX(0) scale(0.6); opacity: 0.3; }
+        50% { transform: translateY(-50vh) translateX(30px) scale(1); opacity: 0.6; }
+        100% { transform: translateY(-100vh) translateX(-30px) scale(0.5); opacity: 0; }
     }
 
     .container {
@@ -42,27 +68,34 @@
         margin: auto;
         padding: 2rem;
         text-align: center;
+        position: relative;
+        z-index: 2;
     }
 
+    /* ===== HERO SECTION ===== */
     .hero h1 {
         font-family: 'Baloo 2', cursive;
-        font-size: 3.5rem;
-        color: var(--cloud-white);
-        text-shadow: 0 0 10px rgba(74, 144, 226, 0.6); 
-        margin-bottom: 0.5rem;
+        font-size: 3.6rem;
+        background: linear-gradient(90deg, var(--cream-white), var(--muted-gold), var(--cozy-pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 25px rgba(255, 180, 120, 0.6);
+        margin-bottom: 0.6rem;
         opacity: 0;
         transform: translateY(20px);
-        animation: fadeSlideUp 1s forwards 0.2s;
+        animation: fadeSlideUp 1.2s forwards ease-in-out 0.3s;
     }
 
     .hero p {
-        font-size: 1.3rem;
+        font-size: 1.15rem;
+        color: var(--muted-gold);
         margin-bottom: 3rem;
         opacity: 0;
         transform: translateY(20px);
-        animation: fadeSlideUp 1s forwards 0.5s;
+        animation: fadeSlideUp 1.2s forwards ease-in-out 0.6s;
     }
 
+    /* ===== CARDS ===== */
     .cards {
         display: flex;
         flex-wrap: wrap;
@@ -72,78 +105,72 @@
     }
 
     .card {
-        background-color: rgba(74, 144, 226, 0.2);
-        backdrop-filter: blur(8px);
-        border: 1px solid rgba(240, 248, 255, 0.4); 
-        border-radius: 15px;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        padding: 1.5rem;
-        width: 250px;
+        background: rgba(255, 240, 220, 0.12);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 235, 220, 0.3);
+        border-radius: 18px;
+        box-shadow: 0 0 25px rgba(255, 180, 120, 0.25);
+        padding: 1.7rem;
+        width: 260px;
         text-align: center;
-        transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+        transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
         opacity: 0;
         transform: translateY(20px);
-        animation: fadeSlideUp 0.8s forwards;
+        animation: fadeSlideUp 1.2s forwards ease-in-out;
     }
 
-    .card:nth-child(1) { animation-delay: 0.7s; }
-    .card:nth-child(2) { animation-delay: 0.9s; }
-    .card:nth-child(3) { animation-delay: 1.1s; }
+    .card:nth-child(1) { animation-delay: 0.9s; }
+    .card:nth-child(2) { animation-delay: 1.1s; }
+    .card:nth-child(3) { animation-delay: 1.3s; }
 
     .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.3), 0 0 15px var(--gentle-cyan);
-        background-color: rgba(74, 144, 226, 0.35);
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 0 30px rgba(255, 180, 130, 0.4);
+        background: rgba(255, 210, 180, 0.2);
     }
 
     .card h3 {
-        color: var(--petal-pink);
-        margin-bottom: 0.5rem;
+        color: var(--peach-glow);
+        margin-bottom: 0.6rem;
+        text-shadow: 0 0 10px rgba(255, 190, 130, 0.5);
     }
 
     .card p {
         font-size: 0.95rem;
-        color: var(--text-muted);
-        margin-bottom: 1rem;
+        color: var(--muted-gold);
+        margin-bottom: 1.3rem;
     }
 
     .card button {
-        padding: 0.5rem 1rem;
-        background-color: var(--gentle-cyan);
-        color: var(--deep-sky);
+        padding: 0.7rem 1.3rem;
+        background: linear-gradient(90deg, var(--soft-orange), var(--cozy-pink), var(--sunset-red));
+        color: var(--cream-white);
         font-weight: 600;
         border: none;
-        border-radius: 8px;
+        border-radius: 10px;
         cursor: pointer;
-        transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+        transition: all 0.5s ease;
+        box-shadow: 0 0 15px rgba(255, 160, 90, 0.3);
     }
 
     .card button:hover {
-        background-color: var(--calm-blue);
-        color: var(--cloud-white);
-        transform: scale(1.05);
-        box-shadow: 0 0 10px var(--petal-pink);
+        transform: scale(1.06);
+        box-shadow: 0 0 25px rgba(255, 190, 120, 0.5);
     }
 
-    .discord-card a button {
-        background-color: var(--discord-purple);
-        color: var(--cloud-white);
-    }
-
-    .discord-card a button:hover {
-        background-color: var(--discord-hover);
-    }
-
+    /* ===== FOOTER ===== */
     footer {
-        background-color: var(--deep-sky);
-        color: white;
+        background-color: rgba(40, 20, 15, 0.8);
+        color: var(--cream-white);
         padding: 2rem 1rem;
         text-align: center;
-        box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+        box-shadow: 0 -5px 15px rgba(0,0,0,0.4);
+        position: relative;
+        z-index: 2;
     }
 
     footer a {
-        color: var(--gentle-cyan);
+        color: var(--peach-glow);
         text-decoration: none;
         margin: 0 10px;
         font-weight: 600;
@@ -151,7 +178,7 @@
     }
 
     footer a:hover {
-        color: var(--petal-pink);
+        color: var(--cozy-pink);
         text-decoration: underline;
     }
 
@@ -170,9 +197,18 @@
 </head>
 <body>
 
+    <div class="embers">
+        <div class="ember" style="left:10%; animation-delay: 0s;"></div>
+        <div class="ember" style="left:25%; animation-delay: 3s;"></div>
+        <div class="ember" style="left:45%; animation-delay: 1s;"></div>
+        <div class="ember" style="left:60%; animation-delay: 5s;"></div>
+        <div class="ember" style="left:75%; animation-delay: 2s;"></div>
+        <div class="ember" style="left:90%; animation-delay: 4s;"></div>
+    </div>
+
     <div class="container hero">
-        <h1>Hi, I'm Breezo ✨</h1>
-        <p>A gentle breath of fresh air for creative ideas.</p>
+        <h1>Breezo’s Airflow</h1>
+        <p>A cozy horizon of creativity — where every spark feels warm.</p>
     </div>
 
     <div class="container cards">
@@ -183,12 +219,12 @@
         </div>
         <div class="card">
             <h3>Stay Tuned</h3>
-            <p>Coming Soon</p>
+            <p>More to come soon — keep your eyes on the horizon.</p>
             <button onclick="window.location.href='portfolio.html'">Under Update</button>
         </div>
-        <div class="card discord-card">
+        <div class="card">
             <h3>The Gathering</h3>
-            <p>Join the Breezo community server and connect with us!</p>
+            <p>Join the Breezo community server and connect with us.</p>
             <a href="https://discord.gg/SBh4rTh3gr" target="_blank" rel="noopener noreferrer">
                 <button>Join The Server</button>
             </a>
@@ -200,7 +236,7 @@
         <a href="https://www.youtube.com/@imbreezo" target="_blank" rel="noopener noreferrer">YouTube</a>
         <a href="#" target="_blank" rel="noopener noreferrer">Twitch</a>
         <a href="#" rel="noopener noreferrer">BlueSky</a>
-        <p style="margin-top: 1rem;">&copy; 2025 Breezo. All breeze rights reserved.</p>
+        <p style="margin-top: 1rem;">&copy; 2025 Breezo. Cozy vibes under a soft orange sky.</p>
     </footer>
 
 </body>
